@@ -1,0 +1,294 @@
+:root {
+  --primary: rgb(72, 41, 121);
+}
+
+html {
+  line-height: 1.15;
+}
+
+body {
+  margin: 0;
+}
+
+footer {
+  padding: 20px;
+  font-size: 1.5rem;
+}
+
+main {
+  display: block;
+}
+
+body {
+  background: #fff;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+input {
+  outline: none;
+}
+
+select {
+  outline: none;
+}
+
+.navbar {
+  background-color: transparent;
+}
+
+.fixed-top {
+  z-index: 1 !important;
+}
+
+#primary-menu {
+  gap: 20px;
+}
+
+#primary-menu .menu-item {
+  padding: 0.5rem 0;
+}
+
+#primary-menu a.nav-link {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#primary-menu li.nav-item ul.dropdown-menu {
+  background-color: #2a2f3c;
+}
+
+.custom-logo {
+  width: 80px;
+  height: auto;
+}
+
+.banner {
+  bottom: 40px;
+  right: 60px;
+}
+
+.banner a {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.slick-arrow {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 20px 0;
+  border: none;
+  display: none !important;
+  color: #000 !important;
+  position: absolute;
+}
+.slick-prev {
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.slick-next {
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.slick-slide img {
+  filter: brightness(0.7);
+}
+
+.slick-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 0;
+}
+
+.slick-dots li {
+  list-style-type: none;
+}
+
+.slick-dots .slick-active button {
+  background-color: var(--primary);
+}
+
+.slick-dots li button {
+  font-size: 0;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.26);
+  border: none;
+}
+
+.slick-slider:hover .slick-arrow {
+  display: inline-block !important;
+}
+
+.location-custom-thumbnail {
+  height: auto !important;
+}
+
+.location-item {
+  overflow: hidden;
+}
+
+.location-item img:hover {
+  scale: 1.3;
+  transition: scale 0.5s;
+}
+
+.location-item img {
+  scale: 1;
+  transition: scale 0.5s;
+}
+
+.is-sticky {
+  left: 0;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+#label__booking-time {
+  position: relative;
+}
+
+#label__booking-time input#booking-time {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  display: inline-block;
+  opacity: 0;
+}
+
+.hotel-banner {
+  width: 100%;
+  height: auto;
+  filter: brightness(0.7);
+}
+
+.banner.hotel-title {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-weight: 500;
+  font-size: 52px;
+  text-align: center;
+}
+
+.post-banner {
+  height: auto !important;
+}
+
+.site-header nav.navbar {
+  transition: background-color 0.5s ease;
+}
+
+.scrolled {
+  background-color: rgb(72, 41, 121);
+}
+
+@media all and (min-width: 992px) {
+  .navbar .nav-item .dropdown-menu {
+    display: none;
+  }
+  .navbar .nav-item:hover .dropdown-menu {
+    display: block;
+  }
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+}
+
+.cls_loader {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000000;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.sk-three-bounce {
+  width: 100px;
+  text-align: center;
+}
+
+.sk-three-bounce .sk-child {
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: #25282b;
+  border: 1px solid #25282b;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-three-bounce 1.4s ease-in-out 0s infinite both;
+  animation: sk-three-bounce 1.4s ease-in-out 0s infinite both;
+}
+
+.sk-three-bounce .sk-bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.sk-three-bounce .sk-bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-three-bounce {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes sk-three-bounce {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}

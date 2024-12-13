@@ -1,0 +1,369 @@
+:root {
+  --white--color: #fff;
+  --black--color: #222;
+  --primary--color: #482979;
+  --hover--color: #331464;
+  --dark--background--color: #1f232b;
+}
+body {
+  position: relative;
+  width: 100%;
+}
+* {
+  /* font-family: 'Open Sans'; */
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+/* ::-webkit-scrollbar {
+    width: 12px;
+    background: transparent;
+    display: none;
+  } */
+html {
+  font-size: 62.5%;
+  line-height: 1.6rem;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+ul {
+  list-style: none;
+}
+label {
+  font-weight: normal;
+  font-size: 1.4rem;
+  margin-right: 20px;
+  margin-left: 10px;
+}
+textarea::placeholder,
+input::placeholder {
+  color: #c5c5c5;
+}
+
+textarea {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px 12px;
+}
+.select-editable {
+  position: relative;
+  background-color: white;
+  border: solid grey 1px;
+  width: 120px;
+  height: 18px;
+}
+.select-editable select {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  font-size: 14px;
+  border: none;
+  width: 120px;
+  margin: 0;
+}
+.select-editable input {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100px;
+  padding: 1px;
+  font-size: 12px;
+  border: none;
+}
+.select-editable select:focus,
+.select-editable input:focus {
+  outline: none;
+}
+.flatpickr-mobile:before {
+  content: attr(placeholder);
+  color: gray;
+}
+.flatpickr-mobile:focus[value]:not([value=""]):before {
+  display: none;
+}
+
+input[type="hidden"][value]:not([value=""]) + .flatpickr-mobile:before {
+  display: none;
+}
+.link-route {
+  display: contents;
+}
+.text-note {
+  font-size: 1.4rem;
+}
+::placeholder {
+  color: var(--white--color);
+  font-size: 1.4rem;
+  padding-left: 5px;
+}
+.center {
+  text-align: center;
+}
+.pre-line {
+  white-space: pre-line;
+}
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
+.purple {
+  color: #482979;
+  /* margin-right: 20px; */
+}
+.style-line {
+  vertical-align: middle;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.base__btn {
+  position: relative;
+  height: 40px;
+  width: 100%;
+  text-decoration: none;
+  border: none;
+  border-radius: 2px;
+  font-size: 1.5rem;
+  padding: 0 12px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.base__btn:hover {
+  border: 2px solid var(--white--color);
+  background-color: var(--hover--color);
+  color: var(--white--color);
+}
+.base__btn a {
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+.name__title {
+  padding: 3px 26px 0 8px;
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+.required__note {
+  text-align: left;
+  color: red;
+  font-size: 1.4rem;
+}
+.base__form {
+  padding-left: 200px;
+  margin: 30px 0 30px 0;
+}
+.form__content {
+  margin-bottom: 20px;
+  height: 42px;
+  border: solid 1px #c5c5c5;
+  box-shadow: 0 0 0;
+  padding: 3px 26px 0 8px;
+  font-size: 1.4rem;
+  margin-right: 10px;
+}
+.form__content select {
+  width: 230px;
+}
+.form-group input[type="radio"] {
+  margin-right: 5px;
+}
+.form__input {
+  display: inline-block;
+}
+::placeholder {
+  color: #ffffff;
+  font-weight: 500;
+}
+.carousel-inner img {
+  width: 100%;
+  height: 100%;
+}
+.btn__top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 999;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #000000;
+  border-radius: 50px;
+  background: #000000;
+  font-size: 2.4rem;
+  color: #fff;
+  animation: fadeIn 0.5s linear;
+}
+.btn_en-fixed {
+  position: fixed;
+  right: 20px;
+  bottom: 80px;
+  z-index: 999;
+  width: 30px;
+  height: 30px;
+  background: url("https://cdn-icons-png.flaticon.com/128/197/197374.png")
+    center center / cover no-repeat;
+  border-radius: 50px;
+  font-size: 2.4rem;
+  color: #fff;
+  animation: fadeIn 0.5s linear;
+  cursor: pointer;
+  box-shadow: 0 0 5px #2f2f2f;
+}
+.btn_ja-fixed {
+  position: fixed;
+  right: 20px;
+  bottom: 120px;
+  z-index: 999;
+  width: 30px;
+  height: 30px;
+  background: url("https://cdn-icons-png.flaticon.com/128/197/197604.png")
+    center center / cover no-repeat;
+  font-size: 2.4rem;
+  color: #fff;
+  animation: fadeIn 0.5s linear;
+  display: inline-block;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 5px #2f2f2f;
+}
+.btn_vie-fixed {
+  position: fixed;
+  right: 20px;
+  bottom: 160px;
+  z-index: 999;
+  width: 30px;
+  height: 30px;
+  background: url("https://cdn-icons-png.flaticon.com/128/197/197473.png")
+    center center / cover no-repeat;
+  border-radius: 50px;
+  font-size: 2.4rem;
+  color: #fff;
+  animation: fadeIn 0.5s linear;
+  cursor: pointer;
+  box-shadow: 0 0 5px #2f2f2f;
+}
+.btn_kor-fixed {
+  position: fixed;
+  right: 20px;
+  bottom: 200px;
+  z-index: 999;
+  width: 30px;
+  height: 30px;
+  background: url("https://cdn-icons-png.flaticon.com/128/197/197582.png")
+    center center / cover no-repeat;
+  border-radius: 50px;
+  font-size: 2.4rem;
+  color: #fff;
+  animation: fadeIn 0.5s linear;
+}
+.btn__top:hover {
+  color: #ffffff;
+  background-color: #482979;
+  border-color: #482979;
+}
+.btn__send {
+  width: 30%;
+  margin: 10px 0;
+  background-color: var(--primary--color);
+  color: var(--white--color);
+}
+
+.is-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
+.carousel-item img {
+  width: 100%;
+  height: auto;
+}
+.carousel.carousel-slider .control-arrow {
+  z-index: 1;
+}
+.scroll-indicator-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: #ddd;
+  z-index: 999;
+}
+.bold {
+  font-size: 1.8rem !important;
+  font-weight: 900 !important;
+  color: #482979 !important;
+}
+.bold-white {
+  font-size: 1.8rem !important;
+  font-weight: 900 !important;
+  color: #ffffff !important;
+  text-transform: uppercase;
+}
+.left {
+  text-align: left !important;
+}
+.right {
+  text-align: right !important;
+}
+.scroll-indicator {
+  height: 100%;
+  background-color: var(--primary--color);
+  transition: width 0.3s;
+}
+
+@media screen and (min-width: 46.25em) and (max-width: 63.9375em) {
+  .is-sticky {
+    position: relative;
+    z-index: 1;
+  }
+}
+/* mobile */
+@media screen and (max-width: 46.1875em) {
+  .is-sticky {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes floatRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes darken {
+  from {
+    filter: brightness(1);
+  }
+  to {
+    filter: brightness(0.5);
+  }
+}
