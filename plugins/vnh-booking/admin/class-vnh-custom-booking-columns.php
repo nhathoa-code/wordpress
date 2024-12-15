@@ -43,7 +43,8 @@ class Vnh_Custom_Booking_Columns {
 				echo "<p>{$guest_info["g_phone"]}</p>";
 				break;
 			case 'price':
-				echo number_format(1500000,0,"",".") ."vnd";
+				$room_type_meta = get_post_meta($room_type->ID,'vnh_room_type_meta',true);
+				echo number_format($room_type_meta['price'],0,"",".") ."vnd";
 				break;
 			case 'hotel':
 				echo sprintf('<strong><a class="row-title" href="%s" (Edit)">%s</a></strong>',get_edit_post_link($hotel->ID),$hotel->post_title);

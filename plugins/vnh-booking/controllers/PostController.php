@@ -91,7 +91,7 @@ class PostController{
 		update_post_meta($post_id,"gallery",$_POST["gallery"]);
 	}
 
-	public function updateBooking($post_id,$update){
+	public function updateBooking($post_id){
         if ('auto-draft' === get_post_status($post_id)) {
         	return;
     	}

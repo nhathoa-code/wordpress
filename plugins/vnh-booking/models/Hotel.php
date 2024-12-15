@@ -75,11 +75,19 @@ class Hotel{
                 'meta_query' => $meta_query,
                 'fields' => 'ids'
             ));
-            $booked_room_type_ids = [];
             foreach($booked_rooms as $b_id){
-                $booked_room_type_ids[] = get_post_meta($b_id, 'room-type', true);
+                $booked_room_type = get_post_meta($b_id, 'room-type', true);
+                $quantity = (int) get_post_meta($b_id,'booking-meta',true)['quantity'];
+                $booked_room_type_arr[$booked_room_type] = $quantity;
             }
-            $count_arr = array_count_values($booked_room_type_ids);
+            $count_arr = [];
+            foreach ($booked_room_type_arr as $key => $value) {
+                if (isset($count_arr[$key])) {
+                    $count_arr[$key] += $value;
+                } else {
+                    $count_arr[$key] = $value;
+                }
+            }
             if($room_type){
                 $room_type_quantity = get_post_meta($room_type,"vnh_room_type_meta",true)["quantity"];
                 if(!isset($count_arr[$room_type])){

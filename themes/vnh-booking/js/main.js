@@ -143,20 +143,24 @@ jQuery(document).ready(function ($) {
             form[0].reset();
           },
           error: function (err) {
+            console.log(err);
             let errors = err.responseJSON.data;
             if (errors.hasOwnProperty("unavailable")) {
               return alert("Xin lỗi quý khách, đã hết phòng loại này!");
-            }
-            alert("Có lỗi nhập dữ liệu, vui lòng kiểm tra lại!");
-            for (const field in errors) {
-              const str = errors[field];
-              for (const x in str) {
-                if (field == "check-in-time" || field == "check-out-time") {
-                  $(`input[name=${field}]`).css("border-color", "red");
-                } else {
-                  $(`input[name=${field}]`).after(
-                    `<span class="col-md-2 required__note">${str[x]}</span>`
-                  );
+            } else if (errors.hasOwnProperty("error_nonce")) {
+              return alert("Yêu cầu không hợp lệ");
+            } else {
+              alert("Có lỗi nhập dữ liệu, vui lòng kiểm tra lại!");
+              for (const field in errors) {
+                const str = errors[field];
+                for (const x in str) {
+                  if (field == "check-in-time" || field == "check-out-time") {
+                    $(`input[name=${field}]`).css("border-color", "red");
+                  } else {
+                    $(`input[name=${field}]`).after(
+                      `<span class="col-md-2 required__note">${str[x]}</span>`
+                    );
+                  }
                 }
               }
             }

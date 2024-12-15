@@ -55,6 +55,8 @@ class Booking{
             $format = array('%s', '%s', '%s', '%s', '%s', '%d', '%d', '%s', '%s');
             $wpdb->insert($table_name, $data, $format);
             wp_delete_post($post_id);
+            wp_redirect(admin_url('edit.php?post_type=vnh_booking&page=booking-history'));
+            exit;
         }
         update_post_meta($post_id,"log",$log);
         update_post_meta($post_id,"status",$_POST["status"]);

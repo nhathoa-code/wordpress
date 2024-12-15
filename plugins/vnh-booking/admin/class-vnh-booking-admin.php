@@ -203,9 +203,10 @@ class Vnh_Booking_Admin {
 		wp_send_json_success($x);
 	}
 
-	public function filter_bookings_by_status($query) {
+	public function filter_bookings($query) {
 		if (is_admin() && $query->is_main_query() && $query->get('post_type') === 'vnh_booking') {
 			$status = isset($_GET['status']) ? $_GET['status'] : '';
+			$hotel = $_GET["hotel"] ?? "";
 			if ($status) {
 				$query->set('meta_query', [
 					[
@@ -215,33 +216,59 @@ class Vnh_Booking_Admin {
 					],
 				]);
 			}
+			if(!empty($hotel)) {
+				$query->set('meta_query', [
+					[
+						'key'   => 'hotel', 
+						'value' => $hotel,
+						'compare' => '=', 
+					],
+				]);
+			}
     	}
 	}
 
-	public function customize_post_type_views($views) {
+	public function customize_booking_views($views) {
 		global $post_type;
 		if ($post_type === 'vnh_booking') {
 			unset($views['publish']);
 			$views['spending'] = sprintf(
 				'<a href="%s" class="%s">%s</a>',
 				admin_url("edit.php?post_type=vnh_booking&status=spending"), 
-				isset($_GET['custom_param']) ? 'current' : '',
+				isset($_GET['status']) && $_GET['status'] == 'spending'  ? 'current' : '',
 				'Chờ xác nhận (' . $this->get_posts_count_by_meta("status","spending") . ')' 
 			);
 			$views['confirmed'] = sprintf(
 				'<a href="%s" class="%s">%s</a>',
 				admin_url("edit.php?post_type=vnh_booking&status=confirmed"), 
-				isset($_GET['custom_param']) ? 'current' : '',
+				isset($_GET['status']) && $_GET['status'] == 'confirmed' ? 'current' : '',
 				'Đã xác nhận (' . $this->get_posts_count_by_meta("status","confirmed") . ')' 
 			);
 			$views['checked-in'] = sprintf(
 				'<a href="%s" class="%s">%s</a>',
 				admin_url("edit.php?post_type=vnh_booking&status=checked-in"), 
-				isset($_GET['custom_param']) ? 'current' : '',
+				isset($_GET['status']) && $_GET['status'] == 'checked-in' ? 'current' : '',
 				'Đã nhận phòng (' . $this->get_posts_count_by_meta("status","checked-in") . ')'
 			);
 		}
 		return $views;
+	}
+
+	function add_custom_tablenav($post_type, $which) {
+		if ($post_type === 'vnh_booking') {
+			if ($which === 'top') { 
+				require_once plugin_dir_path( dirname( __FILE__ ) ) . 'models/Post.php';
+				$post = new Post();
+				$hotels = $post->getHotels();
+			?>
+				<select name="hotel">
+					<option value="">All hotels</option>
+					<?php foreach($hotels as $h): ?>
+						<option <?php selected($h->ID,$_GET["hotel"] ?? ""); ?> value="<?php echo $h->ID; ?>"><?php echo $h->post_title; ?></option>
+					<?php endforeach; ?>
+				</select>
+			<?php }
+		}
 	}
 
 	public function get_posts_count_by_meta($meta_key, $meta_value) {

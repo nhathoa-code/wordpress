@@ -545,7 +545,7 @@ class Validator
     {
         if(!empty($this->_errors)){
             if(wp_doing_ajax()){
-                wp_send_json_error( $this->_errors,400);
+                wp_send_json_error($this->_errors,400);
             }else{   
                 session_start();
                 $_SESSION["errors"] = $this->_errors;

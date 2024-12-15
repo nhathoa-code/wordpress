@@ -126,7 +126,7 @@ function vnh_booking_scripts() {
 	if(is_page("reservation")){
 		$localized_data["reservation"] = true;
 		$localized_data["ajax_url"] = admin_url('admin-ajax.php');
-		$localized_data["nonce"] = wp_create_nonce('my_ajax_nonce');
+		$localized_data["reservation_nonce"] = wp_create_nonce('reservation');
 	}
 	wp_localize_script('vnh-booking-main-script', 'localizedData', $localized_data);
 }
@@ -181,43 +181,6 @@ function checkBookingDate(){
 	}
 	$interval = $check_in_date->diff($check_out_date);
 	return $interval->days;
-}
-
-
-function customize_post_type_views($views) {
-    global $post_type;
-    if ($post_type === 'vnh_booking') {
-        unset($views['publish']);
-        $views['spending'] = sprintf(
-            '<a href="%s" class="%s">%s</a>',
-            admin_url("edit.php?post_type=your_custom_post_type&custom_param=1"), 
-            isset($_GET['custom_param']) ? 'current' : '',
-            'Chờ xác nhận (' . get_posts_count_by_meta("status","spending") . ')' 
-        );
-		$views['confirmed'] = sprintf(
-            '<a href="%s" class="%s">%s</a>',
-            admin_url("edit.php?post_type=your_custom_post_type&custom_param=1"), 
-            isset($_GET['custom_param']) ? 'current' : '',
-            'Đã xác nhận (' . get_posts_count_by_meta("status","confirmed") . ')' 
-        );
-		$views['checked-in'] = sprintf(
-            '<a href="%s" class="%s">%s</a>',
-            admin_url("edit.php?post_type=your_custom_post_type&custom_param=1"), 
-            isset($_GET['custom_param']) ? 'current' : '',
-            'Đã nhận phòng (' . get_posts_count_by_meta("status","checked-in") . ')'
-        );
-    }
-    return $views;
-}
-add_filter('views_edit-vnh_booking', 'customize_post_type_views');
-
-function get_posts_count_by_meta($meta_key, $meta_value) {
-    $query = new WP_Query([
-        'post_type'  => 'vnh_booking',
-		'meta_key'   => $meta_key,
-        'meta_value' => $meta_value,
-    ]);
-    return $query->found_posts;
 }
 
 function customize_row_actions($actions, $post) {

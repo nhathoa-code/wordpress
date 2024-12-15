@@ -2,8 +2,11 @@
 
 class ClientController{
     public function makeReservation(){
+        if(!wp_doing_ajax()){
+            wp_die("Yêu cầu không hợp lệ");
+        }
         if (!isset($_POST['reservation_nonce']) || !wp_verify_nonce($_POST['reservation_nonce'], 'reservation')) {
-            wp_die('Nonce verification failed.');
+           wp_send_json_error(["error_nonce"=>true],400);
         }
         global $prevent_save_post;
         $prevent_save_post = false;
@@ -49,9 +52,15 @@ class ClientController{
     public function hotelRoomTypes() {
         require_once WP_PLUGIN_DIR . '/vnh-booking/models/Hotel.php';
         $hotel = new Hotel(get_the_ID());
-        $room_types = $hotel->getRoomTypes();
-        global $count_arr;
+        if(checkBookingDate()){
+            $arr = $hotel->checkAvailability($_GET['check-in'],$_GET['check-out']);
+            $room_types = $arr[0];
+            $count_arr = $arr[1];
+            set_query_var("count_arr",$count_arr);
+        }else{
+            $room_types = $hotel->getRoomTypes();
+        }
         set_query_var("room_types",$room_types);
-        set_query_var("count_arr",$count_arr);
+        
     }
 }

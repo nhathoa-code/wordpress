@@ -57,6 +57,10 @@ class Vnh_Booking {
 		$this->loader->add_action( 'manage_vnh_room_type_posts_custom_column', $plugin_admin, 'custom_room_type_columns_data',10,2);
 		$this->loader->add_filter( 'manage_vnh_booking_posts_columns', $plugin_admin, 'custom_booking_columns');
 		$this->loader->add_action( 'manage_vnh_booking_posts_custom_column', $plugin_admin, 'custom_booking_columns_data',10,2);
+		$this->loader->add_action('restrict_manage_posts', $plugin_admin, 'add_custom_tablenav', 10, 2);
+
+		$this->loader->add_action('pre_get_posts', $plugin_admin, 'filter_bookings');
+		$this->loader->add_filter('views_edit-vnh_booking', $plugin_admin, 'customize_booking_views');
 
 		$this->loader->add_action( 'admin_notices', $plugin_admin, 'custom_admin_notices');
 		

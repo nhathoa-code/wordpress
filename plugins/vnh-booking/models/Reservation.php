@@ -14,7 +14,7 @@ class Reservation{
         );
         $booking_meta = array(
             "quantity" => $data["quantity"],
-            "guests" => 2,
+            "guests" => $data["guests"],
             "check_in_time" => $data["check-in-time"],
             "check_out_time" => $data["check-out-time"],
             "guest_info" => $guest_into
